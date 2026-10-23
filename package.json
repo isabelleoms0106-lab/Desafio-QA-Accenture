@@ -1,0 +1,16 @@
+{
+  "name": "desafio-qa-accenture",
+  "version": "1.0.0",
+  "description": "Desafio de QA Automation da Accenture com Cypress",
+  "scripts": {
+    "cy:open": "cypress open",
+    "test": "cypress run"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "cypress": "^13.17.0"
+  }
+}
