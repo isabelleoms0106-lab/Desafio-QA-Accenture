@@ -12,6 +12,11 @@ class BrowserWindowsPage {
     cy.get('#windowButton').click()
   }
 
+  validarPaginaDaNovaJanela() {
+    cy.visit('/sample')
+    cy.get('#sampleHeading').should('have.text', 'This is a sample page')
+  }
+
   validarPaginaAberta() {
     cy.url().should('include', '/browser-windows')
     cy.get('#windowButton').should('be.visible')

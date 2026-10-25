@@ -13,14 +13,14 @@ describe('Widgets - Progress Bar', () => {
     })
 
     progressBarPage.clicarStartStop()
-    progressBarPage.barra({ timeout: 20000 }).should('have.attr', 'aria-valuenow', '100')
+    progressBarPage.esperarChegarEm100()
 
     // Depois do reset o site volta a barra para o início, mas ela continua andando sozinha,
     // por isso valido que voltou para perto de 0 e não exatamente 0
     progressBarPage.clicarReset()
-    progressBarPage.barra().should((barra) => {
-      expect(Number(barra.attr('aria-valuenow'))).to.be.lte(10)
+    progressBarPage.validarBotaoStart()
+    progressBarPage.barra().invoke('attr', 'aria-valuenow').then((valor) => {
+      expect(Number(valor)).to.be.lte(10)
     })
-    cy.get('#startStopButton').should('have.text', 'Start')
   })
 })

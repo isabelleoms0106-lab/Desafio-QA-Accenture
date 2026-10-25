@@ -16,8 +16,16 @@ class ProgressBarPage {
     cy.get('#resetButton').click()
   }
 
-  barra(opcoes) {
-    return cy.get('[role="progressbar"]', opcoes)
+  barra() {
+    return cy.get('[role="progressbar"]')
+  }
+
+  esperarChegarEm100() {
+    cy.get('[role="progressbar"]', { timeout: 20000 }).should('have.attr', 'aria-valuenow', '100')
+  }
+
+  validarBotaoStart() {
+    cy.get('#startStopButton').should('have.text', 'Start')
   }
 }
 

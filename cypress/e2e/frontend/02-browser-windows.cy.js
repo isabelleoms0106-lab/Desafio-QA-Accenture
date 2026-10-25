@@ -13,8 +13,7 @@ describe('Alerts, Frame & Windows - Browser Windows', () => {
     browserWindowsPage.clicarNovaJanela()
 
     cy.get('@novaJanela').should('be.calledWith', '/sample')
-    cy.visit('/sample')
-    cy.get('#sampleHeading').should('have.text', 'This is a sample page')
+    browserWindowsPage.validarPaginaDaNovaJanela()
 
     // "Fecha" a nova janela voltando para a página original
     cy.go('back')
