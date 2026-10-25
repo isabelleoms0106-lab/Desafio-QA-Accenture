@@ -39,11 +39,13 @@ npm test
 cypress/
   e2e/
     api/          testes da API (Parte 1)
-    frontend/     testes das telas (Parte 2), numerados na ordem do desafio
+    frontend/     testes das telas (Parte 2)
   pages/          Page Objects de cada tela
   fixtures/       arquivo .txt usado no upload
   support/        configurações gerais
 ```
+
+Os arquivos de teste são numerados (00 a 05) para rodarem na mesma ordem do desafio.
 
 ## O que foi feito
 
@@ -66,9 +68,10 @@ cypress/
 
 - O Cypress não consegue controlar uma segunda janela do navegador. No teste de Browser Windows eu verifico que a janela seria aberta com o endereço `/sample`, abro esse endereço para validar a mensagem e depois volto para a página original, representando o fechamento da janela.
 - Os testes de frontend seguem o caminho pedido no desafio: abrem a página inicial, escolhem a opção e clicam no submenu. Esses passos ficam no `HomePage.js`.
+- No Sortable a lista já abre em ordem crescente. Para o drag and drop ser testado de verdade, o teste primeiro inverte a lista e depois coloca em ordem crescente.
 
 ## Problemas encontrados no site
 
 - **Practice Form:** o botão "Close" do popup não fecha o popup. No teste ele é fechado com a tecla Esc.
-- **Web Tables:** ao deletar um registro criado pelo usuário, todos os registros criados são deletados juntos.
-- **Progress Bar:** depois de clicar em "Reset" a barra volta para o início, mas continua andando sozinha.
+- **Web Tables:** ao deletar um registro criado pelo usuário, todos os registros criados são deletados juntos. No bônus, o teste só deleta o registro se ele ainda estiver na tabela.
+- **Progress Bar:** depois de clicar em "Reset" a barra volta para o início, mas continua andando sozinha. No teste eu valido que ela voltou para perto de 0.
