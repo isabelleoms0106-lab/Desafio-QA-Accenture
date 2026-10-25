@@ -15,10 +15,7 @@ class PracticeFormPage {
     cy.get('#genterWrapper').contains('label', dados.genero).click()
     cy.get('#userNumber').type(dados.celular)
 
-    cy.get('#dateOfBirthInput').click()
-    cy.get('.react-datepicker__year-select').select(dados.ano)
-    cy.get('.react-datepicker__month-select').select(dados.mes)
-    cy.get('.react-datepicker__day--0' + dados.dia + ':not(.react-datepicker__day--outside-month)').click()
+    cy.get('#dateOfBirthInput').type('{selectall}' + dados.dia + ' ' + dados.mes.substring(0, 3) + ' ' + dados.ano + '{enter}')
 
     cy.get('#subjectsInput').type(dados.materia + '{enter}')
     cy.get('#hobbiesWrapper').contains('label', dados.hobby).click()
