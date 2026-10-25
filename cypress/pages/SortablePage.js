@@ -26,17 +26,6 @@ class SortablePage {
     cy.contains('.vertical-list-container .list-group-item', textoOrigem)
       .trigger('dragend', { dataTransfer })
   }
-
-  // Coloca os itens na ordem recebida, um por um, de cima para baixo
-  ordenar(ordemDesejada) {
-    ordemDesejada.forEach((texto, posicao) => {
-      this.itens().eq(posicao).then((itemNaPosicao) => {
-        if (itemNaPosicao.text() !== texto) {
-          this.arrastar(texto, itemNaPosicao.text())
-        }
-      })
-    })
-  }
 }
 
 export default new SortablePage()

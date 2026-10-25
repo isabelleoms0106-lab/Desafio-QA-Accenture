@@ -1,12 +1,8 @@
 import sortablePage from '../../pages/SortablePage'
 
-const ordemCrescente = ['One', 'Two', 'Three', 'Four', 'Five', 'Six']
-const ordemDecrescente = ['Six', 'Five', 'Four', 'Three', 'Two', 'One']
-
 function validarOrdem(ordemEsperada) {
-  sortablePage.itens().should((itens) => {
-    const textos = itens.map((i, item) => item.innerText).get()
-    expect(textos).to.deep.eq(ordemEsperada)
+  ordemEsperada.forEach((texto, posicao) => {
+    sortablePage.itens().eq(posicao).should('have.text', texto)
   })
 }
 
@@ -16,10 +12,18 @@ describe('Interactions - Sortable', () => {
 
     // A lista já abre em ordem crescente, então primeiro eu inverto
     // para depois testar a ordenação crescente com o drag and drop
-    sortablePage.ordenar(ordemDecrescente)
-    validarOrdem(ordemDecrescente)
+    sortablePage.arrastar('Six', 'One')
+    sortablePage.arrastar('Five', 'One')
+    sortablePage.arrastar('Four', 'One')
+    sortablePage.arrastar('Three', 'One')
+    sortablePage.arrastar('Two', 'One')
+    validarOrdem(['Six', 'Five', 'Four', 'Three', 'Two', 'One'])
 
-    sortablePage.ordenar(ordemCrescente)
-    validarOrdem(ordemCrescente)
+    sortablePage.arrastar('One', 'Six')
+    sortablePage.arrastar('Two', 'Six')
+    sortablePage.arrastar('Three', 'Six')
+    sortablePage.arrastar('Four', 'Six')
+    sortablePage.arrastar('Five', 'Six')
+    validarOrdem(['One', 'Two', 'Three', 'Four', 'Five', 'Six'])
   })
 })
