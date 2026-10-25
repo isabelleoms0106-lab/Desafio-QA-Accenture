@@ -39,7 +39,7 @@ npm test
 cypress/
   e2e/
     api/          testes da API (Parte 1)
-    frontend/     testes das telas (Parte 2)
+    frontend/     testes das telas (Parte 2), numerados na ordem do desafio
   pages/          Page Objects de cada tela
   fixtures/       arquivo .txt usado no upload
   support/        configurações gerais
